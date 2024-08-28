@@ -1,4 +1,6 @@
-import styles from './Footer.module.scss'
+import React from 'react';
+import styles from './Footer.module.scss';
+import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
 
 const Footer = () => {
   return (
@@ -6,12 +8,31 @@ const Footer = () => {
       <div className={styles.contents}>
         <div className={styles.leftSection}>
           <div className={styles.socialIcons}>
-            <span className={styles.icon}>K</span>
-            <span className={styles.icon}>G</span>
-            <span className={styles.icon}>N</span>
+            <a href="/login/GOOGLE">
+              <img 
+                src="https://test.codemshop.com/wp-content/plugins/mshop-mcommerce-premium-s2/lib/mshop-members-s2/assets/images/social/logo/Google.png" 
+                style={{border: "1px solid #bbbbbb", borderRadius: "15%", width: "36px"}} 
+                alt="Google Login"
+              />
+            </a>
+            <a href="/login/KAKAO">
+              <img 
+                src="https://test.codemshop.com/wp-content/plugins/mshop-mcommerce-premium-s2/lib/mshop-members-s2/assets/images/social/icon_1/Kakao.png" 
+                style={{width: "36px", height: "auto", marginLeft: "10px"}} 
+                alt="Kakao Login"
+              />
+            </a>
+            <a href="/login/NAVER">
+              <img 
+                src="https://test.codemshop.com/wp-content/plugins/mshop-mcommerce-premium-s2/lib/mshop-members-s2/assets/images/social/icon_1/Naver.png" 
+                style={{width: "36px", height: "auto", marginLeft: "10px"}} 
+                alt="Naver Login"
+              />
+            </a>
           </div>
-          <div className={styles.companyName}>자비냄비 고객센터</div>
-          <div className={styles.publicNotice}>공지사항</div>
+          <div className={styles.companyName}>자바네명 고객센터</div>
+          <div className={styles.companyName}>공지사항</div>
+          <br></br>
           <div className={styles.links}>
             <a href="#">채용 상담하기 &gt;</a>
             <a href="#">문의 등록하기 &gt;</a>
@@ -24,13 +45,12 @@ const Footer = () => {
             <p>일부 상품과 광고는 누산판매중개자이며 통신판매의 당사자가 아닙니다.</p>
           </div>
           <div className={styles.logo}>
-            <span className={styles.icon}>🚗</span>
-            <span className={styles.text}>헤쳐세요</span>
+          <img src={dowadreamIcon} alt="DoWaDream Logo" className={styles.iconImage} style={{width: "60px", height: "auto", marginLeft: "10px"}}  />
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

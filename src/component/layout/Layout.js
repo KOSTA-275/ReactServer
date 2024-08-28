@@ -1,4 +1,3 @@
-// components/Layout/Layout.js
 import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
@@ -8,11 +7,9 @@ const Layout = (props) => {
   return (
     <div className={styles.layout}>
       <Header />
-
-      <main>
+      <main className={styles.main}>
         {props.children}
       </main>
-
       <Footer />
     </div>
   );

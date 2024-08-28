@@ -1,11 +1,12 @@
-  /* Layout.module.scss */
 .layout {
-  min-height: 100vh; /* 전체 페이지의 최소 높이를 화면 높이로 설정 */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .main {
-  flex: 1; /* main 영역이 가능한 한 많은 공간을 차지하도록 설정 */
+  flex: 1;
+  padding: 20px;
+  margin-top: 100px; /* 헤더 높이만큼의 마진을 추가하여 겹침 방지 */
+  margin-left: 160px; /* 왼쪽에 기본 마진 추가 */
 }
-

@@ -1,19 +1,20 @@
-import styles from './Header.module.scss'
+import React from 'react';
+import styles from './Header.module.scss';
+import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
 
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.contents}>
         <div className={styles.logo}>
-          <span className={styles.icon}>🚗</span>
-          <span className={styles.text}>헤쳐세요</span>
+          <img src={dowadreamIcon} alt="DoWaDream Logo" className={styles.iconImage} style={{width: "60px", height: "auto", marginLeft: "10px"}}  />
         </div>
 
         <nav className={styles.navigation}>
           <ul>
             <li>도와주세요</li>
             <li>도와줄게요</li>
-            <li>헤드헌터</li>
+            <li>해드릴게요</li>
             <li>고객센터</li>
           </ul>
         </nav>
@@ -24,7 +25,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

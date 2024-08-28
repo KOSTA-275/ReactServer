@@ -1,13 +1,11 @@
 import Layout from "./layout/Layout"
-import Header from "./layout/Header"
+import BannerList from "./list/BannerList"
 
 const HomePage = () => {
   return (
     <>
-    <Header>
-
-    </Header>
     <Layout>
+    <BannerList />
     </Layout>
     </>
   )

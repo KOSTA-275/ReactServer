@@ -3,7 +3,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 60px;
+  height: 100px;
   background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -31,7 +31,8 @@
 }
 
 .navigation {
-  margin-left: -550px; // 이 줄을 추가합니다.
+  margin-left: -450px; // 기존 마진 조정 (필요시 유지)
+  
   ul {
     display: flex;
     list-style: none;
@@ -41,7 +42,8 @@
 
   li {
     margin: 0 15px;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold; /* 글씨를 굵게 설정 */
   }
 }
 
@@ -51,7 +53,8 @@
 
   span {
     margin-right: 10px;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold; /* 글씨를 굵게 설정 */
   }
 
   .profileIcon {
