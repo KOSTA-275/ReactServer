@@ -18,3 +18,83 @@
     font-weight: 600;
     font-size: 20px;
   }
+  .footer {
+    background-color: #fff9c4;
+    padding: 40px 0;
+  }
+  
+  .contents {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .leftSection {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .socialIcons {
+    margin-bottom: 10px;
+    
+    .icon {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 50%;
+    }
+  }
+  
+  .companyName {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .publicNotice {
+    margin-bottom: 10px;
+  }
+  
+  .links {
+    a {
+      display: block;
+      color: #333;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+  }
+  
+  .rightSection {
+    text-align: right;
+  }
+  
+  .companyInfo {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    
+    p {
+      margin: 5px 0;
+    }
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+    .icon {
+      font-size: 24px;
+      margin-right: 5px;
+    }
+    
+    .text {
+      font-weight: bold;
+    }
+  }
