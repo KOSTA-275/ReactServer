@@ -1,0 +1,24 @@
+.yellowBox {
+  background-color: #fff9c4;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px;          /* 고정된 너비 */
+  height: 400px;         /* 고정된 높이 */
+  margin: 10px;
+  overflow: hidden;      /* 내용이 박스를 넘을 경우 숨기기 */
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.image {
+  width: 80%;            /* 이미지 너비를 박스 너비의 80%로 설정 */
+  margin: 10px;
+}

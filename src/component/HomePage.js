@@ -1,11 +1,11 @@
 import Layout from "./layout/Layout"
-import BannerList from "./list/BannerList"
+import YellowBoxContainer from "./indexPage/YellowBoxContainer"
 
 const HomePage = () => {
   return (
     <>
     <Layout>
-    <BannerList />
+    <YellowBoxContainer />
     </Layout>
     </>
   )
