@@ -1,6 +1,11 @@
 import React from 'react';
 import styles from './CharacterGallery.module.scss';
 
+// 이미지 파일 import
+import image1 from '../image/BannerList/1.png';
+import image2 from '../image/BannerList/2.png';
+import image3 from '../image/BannerList/3.png';
+
 const CharacterCard = ({ imageUrl, name, description }) => (
   <div className={styles['character-card']}>
     <div className={styles['character-image']}>
@@ -18,16 +23,24 @@ const CharacterCard = ({ imageUrl, name, description }) => (
 );
 
 const CharacterGallery = () => {
+  const handleTextClick = () => {
+    console.log("텍스트 클릭됨");
+  };
+
   const characters = [
-    { imageUrl: require("../image/BannerList/1.png"), name: "삼무유어", description: "삼무 세트" },
-    { imageUrl: require("../image/BannerList/2.png"), name: "삼무용사", description: "삼무 세트" },
-    { imageUrl: require("../image/BannerList/3.png"), name: "삼무헌터", description: "삼무 세트" },
+    { imageUrl: image1, name: "삼무유어", description: "삼무 세트" },
+    { imageUrl: image2, name: "삼무용사", description: "삼무 세트" },
+    { imageUrl: image3, name: "삼무헌터", description: "삼무 세트" },
     { imageUrl: null, name: "", description: "" }
   ];
 
   return (
     <div className={styles['character-gallery']}>
-      <h2>도화중개소</h2>
+      <h2>
+        <span onClick={handleTextClick} className={styles['clickable-text']}>
+          도와줄게요
+        </span>
+      </h2>
       <div className={styles['character-list']}>
         {characters.map((character, index) => (
           <CharacterCard key={index} {...character} />
