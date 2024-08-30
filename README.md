@@ -4,3 +4,10 @@
 npm install sass --save-dev
 npm install bootstrap react-bootstrap
 npm install react-icons
+
+
+# node 설치
+mkdir "C:\Users\Administrator\AppData\Roaming\npm"
+mkdir "C:\Users\Administrator\AppData\Roaming\npm-cache"
+
+npm install -g npm@10.8.3
