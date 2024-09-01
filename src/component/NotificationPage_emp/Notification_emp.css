@@ -1,0 +1,67 @@
+/* Notification_emp.css */
+
+/* 전체 Accordion의 스타일을 정의 */
+.accordion-custom {
+  max-width: 850px; /* 최대 너비를 설정하여 크기를 줄입니다 */
+  margin: 0 auto; /* 수평 가운데 정렬 */
+  text-align: left; /* 내부 텍스트를 오른쪽으로 정렬 */
+  margin-top: 50px; /* 첫 번째 링크의 상단 여백 설정 */
+  margin-right: 15%;
+
+}
+
+/* Accordion의 Header 스타일을 정의 */
+.accordion-custom .accordion-header {
+  font-size: 1rem; /* 폰트 크기를 조절하여 크기를 줄입니다 */
+}
+
+/* Accordion의 Body 스타일을 정의 */
+.accordion-custom .accordion-body {
+  font-size: 0.9rem; /* 폰트 크기를 줄입니다 */
+}
+
+.notiUpdateBtn {
+  background-color: #847ec7; /* 버튼 배경색 */
+}
+
+.notiDeleteBtn {
+  background-color: #847ec7; /* 버튼 배경색 */
+}
+
+.notiInsertBtn {
+  background-color: #847ec7; /* 버튼 배경색 */
+  float: right; /* 버튼을 오른쪽으로 정렬 */
+  margin-right: 162px; /* 버튼의 오른쪽 공백 */
+  color: white; /* 버튼 텍스트 색상 */
+  padding: 10px 20px; /* 버튼 내부 여백 */
+  border: none; /* 버튼 테두리 제거 */
+  border-radius: 4px; /* 둥근 모서리 */
+  cursor: pointer; /* 커서 포인터로 변경 */
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 수평, 수직 중앙 정렬 */
+  width: 400px;
+  background-color: white;
+  border: 2px solid #000;
+  box-shadow: 24px 24px 48px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+  padding: 20px; /* 내부 여백 */
+  outline: none; /* 외곽선 제거 */
+  margin: 20px; /* 모달 외부 여백 */
+  max-height: 80vh; /* 모달 최대 높이 설정 (화면 비율) */
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 추가 */
+  border-radius: 4px; /* 둥근 모서리 */
+}
+
+.notiModalInsertBtn {
+  background-color: #847ec7; /* 버튼 배경색 */;
+  text-align: center; /* 버튼의 오른쪽 공백 */
+  color: white; /* 버튼 텍스트 색상 */
+  padding: 10px 20px; /* 버튼 내부 여백 */
+  border: none; /* 버튼 테두리 제거 */
+  border-radius: 4px; /* 둥근 모서리 */
+  cursor: pointer; /* 커서 포인터로 변경 */
+}

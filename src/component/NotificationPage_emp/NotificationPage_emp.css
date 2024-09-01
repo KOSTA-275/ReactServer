@@ -1,0 +1,17 @@
+/* component/css/NotificationPage_emp.css */
+.app-container {
+  display: flex; /* Flexbox를 사용하여 배치 */
+  height: 100%; /* 높이를 100%로 설정 */
+  align-items: flex-start; /* 두 요소를 상단에 정렬 */
+}
+
+.left-menu {
+  flex: 0 0 auto; /* LeftMenuTap의 크기를 자동으로 설정 */
+  margin-bottom: 30px; /* Footer와의 간격 확보 */
+  width: 20%; /* 필요에 따라 조정 */
+}
+
+.main-content {
+  flex: 1; /* 남은 공간을 차지하도록 설정 */
+  margin-left: 0px; /* 왼쪽 메뉴와의 간격 설정 */  
+}
