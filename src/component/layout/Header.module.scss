@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 .header {
   position: fixed;
   left: 0;
@@ -6,6 +7,10 @@
   height: 100px;
   background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .contents {
@@ -31,19 +36,19 @@
 }
 
 .navigation {
-  margin-left: -450px; // 기존 마진 조정 (필요시 유지)
+  margin-left: 0; /* 기본 마진 조정 */
   
   ul {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-
-  li {
-    margin: 0 15px;
-    font-size: 16px;
-    font-weight: bold; /* 글씨를 굵게 설정 */
+    
+    li {
+      margin: 0 15px;
+      font-size: 16px;
+      font-weight: bold; /* 글씨를 굵게 설정 */
+    }
   }
 }
 
@@ -62,5 +67,79 @@
     height: 30px;
     border-radius: 50%;
     background-color: #e0e0e0;
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .header {
+    height: 80px;
+  }
+
+  .logo {
+    font-size: 16px;
+    
+    .icon {
+      font-size: 20px;
+    }
+  }
+
+  .navigation {
+    ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+  }
+
+  .profile {
+    span {
+      font-size: 14px;
+    }
+
+    .profileIcon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 70px;
+  }
+
+  .logo {
+    font-size: 14px;
+    
+    .icon {
+      font-size: 18px;
+    }
+  }
+
+  .navigation {
+    ul {
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+  }
+
+  .profile {
+    span {
+      font-size: 12px;
+    }
+
+    .profileIcon {
+      width: 20px;
+      height: 20px;
+    }
   }
 }

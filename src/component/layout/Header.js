@@ -1,13 +1,26 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅 import
 import styles from './Header.module.scss';
 import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
 
 const Header = () => {
+  const navigate = useNavigate(); // useNavigate 훅 사용
+
+  // 로그인 클릭 시 호출되는 함수
+  const handleLoginClick = () => {
+    navigate('/loginPage');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.contents}>
         <div className={styles.logo}>
-          <img src={dowadreamIcon} alt="DoWaDream Logo" className={styles.iconImage} style={{width: "60px", height: "auto", marginLeft: "10px"}}  />
+          <img 
+            src={dowadreamIcon} 
+            alt="DoWaDream Logo" 
+            className={styles.iconImage} 
+            style={{ width: "60px", height: "auto", marginLeft: "10px" }} 
+          />
         </div>
 
         <nav className={styles.navigation}>
@@ -20,7 +33,7 @@ const Header = () => {
         </nav>
 
         <div className={styles.profile}>
-          <span>로그인</span>
+          <span onClick={handleLoginClick} style={{ cursor: 'pointer' }}>로그인</span>
           <div className={styles.profileIcon}></div>
         </div>
       </div>
