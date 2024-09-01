@@ -47,6 +47,22 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
     }
   };
 
+  // 삭제 핸들러
+  const handleDelete = async (notiSeq) => {
+    try {
+      await axios.delete('http://localhost:8032/customercare/noti_delete', { params:{notiSeq : notiSeq} });
+      onDataUpdate(); // 상위 컴포넌트에 데이터 업데이트 알림
+    } catch (error) {
+      console.error('삭제 오류:', error);
+    }
+  };
+
+  // 클릭 시 호출되는 핸들러
+  const handleClickDelete = (notiSeq) => () => {
+    handleDelete(notiSeq);
+  };
+
+
   return (
     <>
       <div style={{
@@ -99,7 +115,7 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
                 <br />
                 <br />
                 <Button className="notiUpdateBtn">수정</Button>&nbsp;&nbsp;
-                <Button className="notiDeleteBtn">삭제</Button>
+                <Button className="notiDeleteBtn" onClick={() => handleDelete(notification.notiSeq)}>삭제</Button>
               </Accordion.Body>
             </Accordion.Item>
           ))
