@@ -12,6 +12,6 @@ mkdir "C:\Users\Administrator\AppData\Roaming\npm-cache"<br>
 npm install -g npm@10.8.3<br>
 npm install react react-dom react-router-dom<br>
 
-modal
+modal<br>
 npm install @mui/material @emotion/react @emotion/styled<br>
 import Modal from '@mui/material/Modal';<br>
