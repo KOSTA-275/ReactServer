@@ -10,3 +10,4 @@ node 설치
 mkdir "C:\Users\Administrator\AppData\Roaming\npm"<br>
 mkdir "C:\Users\Administrator\AppData\Roaming\npm-cache"<br>
 npm install -g npm@10.8.3<br>
+npm install react react-dom react-router-dom
