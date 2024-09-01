@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <>
     <Layout>
-    <YellowBoxContainer />
+      <YellowBoxContainer />
     </Layout>
     </>
   )

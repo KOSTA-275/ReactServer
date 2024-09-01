@@ -1,0 +1,24 @@
+/* LeftMenuTap.css */
+.customNav {
+  width: 17%;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Footer와의 간격을 확보 */
+  margin-left: 7%; /* 왼쪽 간격 */
+  background-color:#fff9c4;
+}
+
+.customNav .nav-link {
+  margin-bottom: 20px; /* 각 nav-link 간의 하단 간격 설정 */
+}
+
+.customNav .first-link {
+  font-size: 1.6rem; /* 폰트 크기 증가 */
+  font-weight: bold; /* 볼드체 설정 */
+  margin-top: 30px; /* 첫 번째 링크의 상단 여백 설정 */
+  padding-left: 40px; /* 왼쪽 패딩 조정 */
+}
+
+.customNav .nav-link:not(.first-link) {
+  padding-left: 70px; /* 두 번째 링크부터 왼쪽 패딩 조정 */
+}
