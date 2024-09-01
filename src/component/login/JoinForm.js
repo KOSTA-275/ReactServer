@@ -10,14 +10,14 @@ const JoinForm = () => {
   const [userPw, setUserPw]     = useState('');
   const userEmailInputRef        = useRef(null);
   
-  const navigate = useNavigate();                 // useNavigate 훅을 사용하여 페이지 전환
-  const { loggedIn, toggleLogin } = useAuth();   //Context에서 로그인 상태 및 로그인 상태 변경 함수 가져오기
+  const navigate = useNavigate();                // useNavigate 훅을 사용하여 페이지 전환
+  const { loggedIn, toggleLogin } = useAuth();   // Context에서 로그인 상태 및 로그인 상태 변경 함수 가져오기
 
 
-   //-------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
   //회원가입 폼 전송
   // POST http://localhost:8089/form_join_process -d userEmail userPw userName
-  //-------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
   const myJoinFormSubmit = async (e) => {
     e.preventDefault();
     if (userEmail.trim() === '') {
