@@ -21,8 +21,6 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
   // 모달 표시 여부를 관리하는 상태
   const [openModal, setOpenModal] = useState(false);
 
-  const formRef = useRef(null);
-
   // 모달을 열기 위한 핸들러
   const handleOpenModal = () => {
     setOpenModal(true);
