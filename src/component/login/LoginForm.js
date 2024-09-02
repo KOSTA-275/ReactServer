@@ -11,6 +11,7 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
   const { toggleLogin } = useAuth();
+  const { toggleRole } = useAuth();
 
   const handleSocialLogin = (provider) => {
     window.location.href = `http://localhost:8089/login/${provider}`;
@@ -25,12 +26,49 @@ const LoginForm = () => {
       userEmailInputRef.current.focus();
       return false;
     }
+    // try {
+    //   // 첫 번째 요청
+    //   const res = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/users/login', {
+    //     email: userEmail,
+    //     password: userPw
+    //   }, {
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   });
   
+    //   console.log('첫 번째 요청 응답:', res);
+  
+    //   if (res.status === 200 && res.data) {
+    //     // 두 번째 요청 실행
+    //     const secondRes = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
+    //       userEmail: res.data.email,
+    //       role: res.data.role
+    //     }, {
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       }
+    //     });
+  
+    //     console.log('두 번째 요청 응답:', secondRes);
+  
+    //     // 세션에 토큰 저장
+    //     sessionStorage.setItem('jwtToken', secondRes.data);
+    //     setUserEmail('');
+    //     setUserPw('');
+    //     navigate('/');
+    //     toggleLogin(true);
+    //   } else {
+    //     throw new Error('첫 번째 요청에서 유효한 데이터를 가져오지 못했습니다.');
+    //   }
+    // } catch (err) {
+    //   console.log('에러 발생:', err);
+    // }
     try {
       // 첫 번째 요청
-      const res = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/users/login', {
-        email: userEmail,
-        password: userPw
+      const res = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
+          userEmail: "123",
+          role: "ADMIN"
       }, {
         headers: {
           'Content-Type': 'application/json'
@@ -38,26 +76,25 @@ const LoginForm = () => {
       });
   
       console.log('첫 번째 요청 응답:', res);
-  
+      sessionStorage.setItem('jwtToken', res.data);
+      
       if (res.status === 200 && res.data) {
         // 두 번째 요청 실행
-        const secondRes = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
-          userEmail: res.data.email,
-          role: res.data.role
-        }, {
+        const secondRes = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/role_auth', null,{
           headers: {
+            'Authorization': `Bearer ${res.data}`,
             'Content-Type': 'application/json'
           }
         });
-  
+        
         console.log('두 번째 요청 응답:', secondRes);
-  
+        
         // 세션에 토큰 저장
-        sessionStorage.setItem('jwtToken', secondRes.data);
         setUserEmail('');
         setUserPw('');
         navigate('/');
         toggleLogin(true);
+        toggleRole(secondRes.data);
       } else {
         throw new Error('첫 번째 요청에서 유효한 데이터를 가져오지 못했습니다.');
       }
