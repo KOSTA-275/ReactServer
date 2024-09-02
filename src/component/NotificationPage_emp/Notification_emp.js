@@ -67,7 +67,7 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
         textAlign: 'left',
         fontSize: '1.5rem',
         fontWeight: 'bold',
-        marginLeft: '70px',
+        marginLeft: '15px',
         color: '#28a7e1',
         marginTop: '5px'
       }}>
@@ -99,7 +99,7 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
           </Form>
         </div>
       </Modal>
-
+      <div claasName='container'>
       <Accordion defaultActiveKey="0" className="accordion-custom">
         {data.length > 0 ? (
           data.map((notification) => (
@@ -121,6 +121,7 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
           <div>공지사항이 없습니다.</div>
         )}
       </Accordion>
+      </div>
     </>
   );
 };
