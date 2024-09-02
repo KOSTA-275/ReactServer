@@ -1,8 +1,15 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const clinkHandler = () => {
+    navigate('/notification_emp');
+  }
+
   return (
     <footer className={styles.footer}>
       <div className={styles.contents}>
@@ -30,7 +37,7 @@ const Footer = () => {
               />
             </a>
           </div>
-          <div className={styles.companyName}>자바네명 고객센터</div>
+          <div className={styles.companyName} onClick={clinkHandler} style={{ cursor: 'pointer' }}>자바네명 고객센터</div>
           <div className={styles.companyName}>공지사항</div>
           <br></br>
           <div className={styles.links}>

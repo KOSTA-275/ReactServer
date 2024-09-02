@@ -1,5 +1,13 @@
 /* Notification_emp.css */
 
+.container {
+  display: flex; /* Flexbox 사용 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  margin-right: -30%; /* 왼쪽 간격 */
+}
+
+
+
 /* 전체 Accordion의 스타일을 정의 */
 .accordion-custom {
   max-width: 850px; /* 최대 너비를 설정하여 크기를 줄입니다 */
