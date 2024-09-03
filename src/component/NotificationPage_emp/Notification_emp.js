@@ -35,9 +35,13 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
     event.preventDefault(); // 기본 제출 동작 방지
     // 폼 데이터 수집
     const formData = new FormData(event.target);
-
+    const token = sessionStorage.getItem('jwtToken');
     try {
-      await axios.post('http://localhost:8032/customercare/noti_insert', formData);
+      await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_insert', formData, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
       onDataUpdate(); // 상위 컴포넌트에 데이터 업데이트 알림
       handleCloseModal(); // 모달 닫기
     } catch (error) {
@@ -47,8 +51,15 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
 
   // 삭제 핸들러
   const handleDelete = async (notiSeq) => {
+    const token = sessionStorage.getItem('jwtToken');
     try {
-      await axios.delete('http://localhost:8032/customercare/noti_delete', { params:{notiSeq : notiSeq} });
+      await axios.delete('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_delete',
+      { params:{notiSeq : notiSeq} }, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
       onDataUpdate(); // 상위 컴포넌트에 데이터 업데이트 알림
     } catch (error) {
       console.error('삭제 오류:', error);

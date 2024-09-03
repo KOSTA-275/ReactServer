@@ -15,7 +15,7 @@ const App = () => {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/Notification" element={<NotificationPage />} />
+          <Route path="/Notification" element={<ProtectedRoute><RoleRoute redirectTo="/Notification_emp"><NotificationPage /></RoleRoute></ProtectedRoute>} />
           <Route path="/Notification_emp" element={<NotificationPage_emp />} />
           <Route path="/indexPage" element={<IndexPage />} /> {/* Route 정의 */}
           <Route path="/" element={<IndexPage />} /> {/* Route 정의 */}
