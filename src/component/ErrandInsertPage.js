@@ -2,24 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Layout from "./layout/Layout";
+import CategorySelector from './ErrandInsertPage/CategorySelector';
 import styles from './ErrandInsertPage/ErrandInsertPage.module.css';
-
-const CategorySelector = ({ categories, onSelect }) => {
-  return (
-    <div className={styles.categoryGrid}>
-      {categories.map(category => (
-        <button
-          key={category.id}
-          className={styles.categoryItem}
-          onClick={() => onSelect(category)}
-        >
-          <span className={styles.icon}>{category.icon}</span>
-          <span>{category.name}</span>
-        </button>
-      ))}
-    </div>
-  );
-};
+import { useAuth } from './login/AuthContext';
 
 const ErrandForm = ({ category, onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -28,7 +13,8 @@ const ErrandForm = ({ category, onSubmit }) => {
     location: '',
     price: '',
     estimatedTime: '',
-    deadline: '',
+    deadlineDate: '',
+    deadlineTime: '',
   });
 
   const handleChange = (e) => {
@@ -37,7 +23,9 @@ const ErrandForm = ({ category, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ ...formData, categoryId: category.id });
+    const { deadlineDate, deadlineTime, ...rest } = formData;
+    const deadline = `${deadlineDate} ${deadlineTime}`;
+    onSubmit({ ...rest, categoryId: category.id, deadline });
   };
 
   return (
@@ -49,6 +37,7 @@ const ErrandForm = ({ category, onSubmit }) => {
         value={formData.title}
         onChange={handleChange}
         className={styles.input}
+        required
       />
       <textarea
         name="description"
@@ -56,6 +45,7 @@ const ErrandForm = ({ category, onSubmit }) => {
         value={formData.description}
         onChange={handleChange}
         className={styles.textarea}
+        required
       />
       <input
         type="text"
@@ -64,6 +54,7 @@ const ErrandForm = ({ category, onSubmit }) => {
         value={formData.location}
         onChange={handleChange}
         className={styles.input}
+        required
       />
       <input
         type="number"
@@ -72,6 +63,7 @@ const ErrandForm = ({ category, onSubmit }) => {
         value={formData.price}
         onChange={handleChange}
         className={styles.input}
+        required
       />
       <input
         type="number"
@@ -80,13 +72,24 @@ const ErrandForm = ({ category, onSubmit }) => {
         value={formData.estimatedTime}
         onChange={handleChange}
         className={styles.input}
+        required
       />
-      <input
-        type="datetime-local"
-        name="deadline"
-        value={formData.deadline}
+       <input
+        type="date"
+        name="deadlineDate"
+        value={formData.deadlineDate}
         onChange={handleChange}
         className={styles.input}
+        required
+      />
+      <input
+        type="time"
+        name="deadlineTime"
+        value={formData.deadlineTime}
+        onChange={handleChange}
+        className={styles.input}
+        step="60"
+        required
       />
       <button type="submit" className={styles.submitButton}>심부름 요청하기</button>
     </form>
@@ -94,33 +97,16 @@ const ErrandForm = ({ category, onSubmit }) => {
 };
 
 const ErrandInsertPage = () => {
-  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { loggedIn } = useAuth();
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const token = sessionStorage.getItem('jwtToken');
-        const response = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/ErrandService/categories', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        setCategories(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error('카테고리 로딩 중 오류 발생:', err);
-        setError(err);
-        setLoading(false);
-      }
-    };
-
-    fetchCategories();
-  }, []);
+    if (!loggedIn) {
+      navigate('/loginPage');
+    }
+  }, [loggedIn, navigate]);
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
@@ -129,29 +115,47 @@ const ErrandInsertPage = () => {
   const handleErrandSubmit = async (errandData) => {
     try {
       const token = sessionStorage.getItem('jwtToken');
-      const response = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/ErrandService/errands', errandData, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
+      
+      //임시: 요청자 seq를 777로 설정
+      const dataWithRequesterSeq = { ...errandData, requesterSeq: 777 };
+
+      //실제 요청자 seq를 받아와야함 -> 담당자에게 문의해야함
+      /*
+      const userResponse = await axios.get('http://user-service-url/api/user', {
+        headers: { 'Authorization': `Bearer ${token}` }
       });
+      const userSeq = userResponse.data.seq;
+      const dataWithRequesterSeq = { ...errandData, requesterSeq: userSeq };
+      */
+
+      const response = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/ErrandService/errands', 
+        dataWithRequesterSeq,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
       console.log('심부름이 생성되었습니다:', response.data);
       navigate('/'); // 심부름 생성 후 홈페이지로 이동
     } catch (error) {
       console.error('심부름 생성 중 오류 발생:', error);
-      // 에러 처리 로직 (예: 사용자에게 에러 메시지 표시)
+      setError('심부름 생성 중 오류가 발생했습니다. 다시 시도해 주세요.');
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (!loggedIn) {
+    return null; // 로그인되지 않은 경우 아무것도 렌더링하지 않음
+  }
 
   return (
     <Layout>
       <div className={styles.container}>
         <h1 className={styles.title}>어떤 일을 해주셨으면 하나요?</h1>
-        <CategorySelector categories={categories} onSelect={handleCategorySelect} />
+        <CategorySelector onSelect={handleCategorySelect} />
         {selectedCategory && <ErrandForm category={selectedCategory} onSubmit={handleErrandSubmit} />}
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     </Layout>
   );
