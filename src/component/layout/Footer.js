@@ -1,8 +1,13 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅 import
 
 const Footer = () => {
+  const navigate = useNavigate(); // useNavigate 훅 사용
+  const handleNotifiClick = () => {
+    navigate('/Notification');
+  };
   return (
     <footer className={styles.footer}>
       <div className={styles.contents}>
@@ -31,7 +36,7 @@ const Footer = () => {
             </a>
           </div>
           <div className={styles.companyName}>자바네명 고객센터</div>
-          <div className={styles.companyName}>공지사항</div>
+          <span onClick={handleNotifiClick} style={{ cursor: 'pointer' }}>공지사항</span>
           <br></br>
           <div className={styles.links}>
             <a href="#">채용 상담하기 &gt;</a>
