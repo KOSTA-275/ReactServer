@@ -10,6 +10,9 @@ const Header = () => {
   const handleLoginClick = () => {
     navigate('/loginPage');
   };
+  const handleLogoClick = () => {
+    navigate('/indexPage');
+  }
 
   return (
     <header className={styles.header}>
@@ -20,6 +23,7 @@ const Header = () => {
             alt="DoWaDream Logo" 
             className={styles.iconImage} 
             style={{ width: "60px", height: "auto", marginLeft: "10px" }} 
+            onClick={handleLogoClick}
           />
         </div>
 

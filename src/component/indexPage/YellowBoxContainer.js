@@ -10,9 +10,9 @@ import image3 from '../image/BannerList/3.png';
 const YellowBoxContainer = () => {
   return (
     <div className={styles.container}>
-      <YellowBox title="도와주세요" imageSrc={image1} />
-      <YellowBox title="도와줄게요" imageSrc={image2} />
-      <YellowBox title="해드릴게요" imageSrc={image3} />
+      <YellowBox title="도와주세요!" imageSrc={image1} />
+      <YellowBox title="도와줄게요!" imageSrc={image2} />
+      <YellowBox title="해드릴게요!" imageSrc={image3} />
     </div>
   );
 };

@@ -13,19 +13,19 @@ const NotificationPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // 첫 번째 비동기 요청
-        const res = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
-          userName: '원성진',
-          role: 'ADMIN'
-        }, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
+        // // 첫 번째 비동기 요청
+        // const res = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
+        //   userName: '원성진',
+        //   role: 'ADMIN'
+        // }, {
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   }
+        // });
 
-        console.log('성공:', res);
-        // 세션에 토큰 저장
-        sessionStorage.setItem('jwtToken', res.data);
+        // console.log('성공:', res);
+        // // 세션에 토큰 저장
+        // sessionStorage.setItem('jwtToken', res.data);
 
         // 세션 스토리지에서 JWT 토큰을 가져오기
         const token = sessionStorage.getItem('jwtToken');
