@@ -43,7 +43,7 @@ const LoginForm = () => {
       // res가 유효하면 두 번째 요청 실행
       return axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
           userEmail: res.data.email,
-          role: "ADMIN"
+          role: res.data.role
         }, {
           headers: {
             'Content-Type': 'application/json'
