@@ -6,6 +6,7 @@ import Login from './component/userPage/Login';
 
 import { AuthProvider } from './component/login/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ErrandInsertPage from './component/ErrandInsertPage';
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
       <AuthProvider>
         <Routes>
           <Route path="/notifications" element={<Notification />} />
-          <Route path="/" element={<IndexPage />} /> {/* Route 정의 */}
+          <Route path="/IndexPage" element={<IndexPage />} /> {/* Route 정의 */}
+          <Route path="/" element={<ErrandInsertPage />} /> {/* Route 정의 */}
           <Route path="/loginPage" element={<Login />} /> {/* Route 정의 */}
         </Routes>
       </AuthProvider>
