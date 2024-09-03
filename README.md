@@ -6,7 +6,7 @@ npm install bootstrap react-bootstrap<br>
 npm install react-icons<br>
 
 
-node 설치
+node 설치<br>
 mkdir "C:\Users\Administrator\AppData\Roaming\npm"<br>
 mkdir "C:\Users\Administrator\AppData\Roaming\npm-cache"<br>
 npm install -g npm@10.8.3<br>
