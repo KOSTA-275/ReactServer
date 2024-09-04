@@ -105,6 +105,28 @@ const ErrandInsertPage = () => {
   useEffect(() => {
     if (!loggedIn) {
       navigate('/loginPage');
+    }else {
+      // 사용자 데이터 요청 테스트용
+      const fetchUserData = async () => {
+        try {
+          const token = sessionStorage.getItem('jwtToken');
+          const response = await axios.post(
+            'http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/users/userSelectEmail',
+            null,
+            {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            }
+          );
+          console.log('User data response:', response.data);
+        } catch (error) {
+          console.error('Error fetching user data:', error.response ? error.response.data : error.message);
+        }
+      };
+  
+      fetchUserData();
     }
   }, [loggedIn, navigate]);
 
