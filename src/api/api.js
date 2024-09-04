@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8098/users';
-const PASSWORD_URL = 'http://localhost:8098/password-reset';
+const BASE_URL =
+  'http://ec2-3-39-66-166.ap-northeast-2.compute.amazonaws.com:8098';
+const API_URL = `${BASE_URL}/users`;
+const PASSWORD_URL = `${BASE_URL}/password-reset`;
 export const loginUser = async (email, password) => {
   try {
     const response = await axios.post(
