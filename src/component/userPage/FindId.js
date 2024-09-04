@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { findId } from '../services/api';
-import styles from '../css/FindId.module.css';
+import { findId } from '../../api/api';
+import styles from '../userPage/css/FindId.module.css';
 
 const FindId = () => {
   const [name, setName] = useState('');

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {
   requestVerificationCode,
   verifyCodeAndResetPassword,
-} from '../services/api';
-import styles from '../css/PasswordReset.module.css';
+} from '../../api/api';
+import styles from '../userPage/css/PasswordReset.module.css';
 
 const PasswordReset = () => {
   const [email, setEmail] = useState('');
