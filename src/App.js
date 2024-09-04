@@ -10,6 +10,7 @@ import { AuthProvider } from './component/login/AuthContext';
 import ErrandInsertPage from './component/ErrandInsertPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NotificationPage_emp from './component/NotificationPage_emp';
+import ErrandListPage from './component/ErrandListPage';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/" element={<IndexPage />} />
           <Route path="/loginPage" element={<LoginForm />} />
           <Route path="/errand-insert" element={<ErrandInsertPage />} />
+          <Route path="/errand-list" element={<ErrandListPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

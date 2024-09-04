@@ -30,7 +30,7 @@ const Header = () => {
         <nav className={styles.navigation}>
           <ul>
           <li><Link to="/errand-insert">도와주세요</Link></li>
-            <li>도와줄게요</li>
+          <Link to="/errand-list">도와줄게요</Link>
             <li>해드릴게요</li>
             <li>고객센터</li>
           </ul>

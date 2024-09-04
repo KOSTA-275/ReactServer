@@ -12,14 +12,14 @@ import image7 from '../image/CategoryList/7.png';
 import image8 from '../image/CategoryList/8.png';
 
 const categories = [
-  { id: 1, name: '집안일', icon: image1 },
-  { id: 2, name: '배달', icon: image2 },
-  { id: 3, name: '작업', icon: image3 },
-  { id: 4, name: '펫케어', icon: image4 },
-  { id: 5, name: '이사', icon: image5 },
-  { id: 6, name: '공부', icon: image6 },
-  { id: 7, name: '아르바이트', icon: image7 },
-  { id: 8, name: '기타', icon: image8 }
+  { id: 21, name: '집안일', icon: image1 },
+  { id: 22, name: '배달', icon: image2 },
+  { id: 23, name: '작업', icon: image3 },
+  { id: 24, name: '펫케어', icon: image4 },
+  { id: 25, name: '이사', icon: image5 },
+  { id: 26, name: '공부', icon: image6 },
+  { id: 27, name: '아르바이트', icon: image7 },
+  { id: 28, name: '기타', icon: image8 }
 ];
 
 const CategoryItem = ({ category, onSelect }) => (
