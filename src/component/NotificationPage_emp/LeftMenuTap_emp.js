@@ -11,7 +11,7 @@ const LeftMenuTap_emp = () => {
   const navigateToInq = () => { navigate('/inquiry_emp'); };
 
   return (
-    <div className="container">
+    <>
       <Nav
         className="flex-column customNav"
       >
@@ -21,7 +21,7 @@ const LeftMenuTap_emp = () => {
         <Nav.Link eventKey="link-3">자주 묻는 질문 수정</Nav.Link>
         <Nav.Link eventKey="link-4" onClick={navigateToInq}>문의 답변하기</Nav.Link>
       </Nav>
-    </div>
+    </>
   );
 }
 

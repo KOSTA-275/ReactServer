@@ -3,7 +3,7 @@
 .container {
   display: flex; /* Flexbox 사용 */
   justify-content: center; /* 수평 중앙 정렬 */
-  margin-right: -30%; /* 왼쪽 간격 */
+  margin-right: -70%; /* 왼쪽 간격 */
 }
 
 
@@ -15,7 +15,6 @@
   text-align: left; /* 내부 텍스트를 오른쪽으로 정렬 */
   margin-top: 50px; /* 첫 번째 링크의 상단 여백 설정 */
   margin-right: 15%;
-
 }
 
 /* Accordion의 Header 스타일을 정의 */
