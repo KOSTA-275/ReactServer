@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import IndexPage from './component/IndexPage';
 import NotificationPage from './component/NotificationPage';
 import Login from './component/userPage/Login';
-import { AuthProvider } from './component/login/AuthContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './component/userPage/Signup';
 import FindId from './component/userPage/FindId';
 import PasswordReset from './component/userPage/PasswordReset';
