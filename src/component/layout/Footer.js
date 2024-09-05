@@ -8,6 +8,12 @@ const Footer = () => {
   const handleNotifiClick = () => {
     navigate('/Notification');
   };
+  const handleFaqClick = () => {
+    navigate('/FaqPage');
+  };
+  const handleInqClick = () => {
+    navigate('/InquiryPage');
+  };
   return (
     <footer className={styles.footer}>
       <div className={styles.contents}>
@@ -39,8 +45,8 @@ const Footer = () => {
           <span onClick={handleNotifiClick} style={{ cursor: 'pointer' }}>공지사항</span>
           <br></br>
           <div className={styles.links}>
-            <a href="#">채용 상담하기 &gt;</a>
-            <a href="#">문의 등록하기 &gt;</a>
+          <span onClick={handleFaqClick} style={{ cursor: 'pointer' }}>자주 묻는 질문</span>
+          <span onClick={handleInqClick} style={{ cursor: 'pointer' }}>문의 등록하기</span>
           </div>
         </div>
         <div className={styles.rightSection}>

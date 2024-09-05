@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './layout/Layout';
 import LeftMenuTap from './NotificationPage/LeftMenuTap';
-import Notification from './NotificationPage/Notification';
-import './NotificationPage/NotificationPage.css';
+import Faq from './FaqPage/Faq';
+import './FaqPage/FaqPage.css';
 import axios from 'axios';
 
-const NotificationPage = () => {
+const FaqPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [notifications, setNotifications] = useState([]); // notificationRes를 저장할 상태 추가
+  const [faqs, setFaqs] = useState([]); // notificationRes를 저장할 상태 추가
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,19 +18,19 @@ const NotificationPage = () => {
         const token = sessionStorage.getItem('jwtToken');
 
         // JWT 토큰이 있는지 확인
-        if (token) {
+        if (true) {
           // 두 번째 비동기 요청
-          const notificationRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_list', {
-           //const notificationRes = await axios.get('http://localhost:8032/customercare/noti_list', {
+          const faqRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/faq_list', {
+          // const notificationRes = await axios.get('http://localhost:8032/customercare/noti_list', {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json'
             }
           });
 
-          console.log('가져옴:', notificationRes);
+          console.log('가져옴:', faqRes);
           // notificationRes.data를 상태에 저장
-          setNotifications(notificationRes.data);
+          setFaqs(faqRes.data);
         } else {
           console.log('JWT 토큰이 세션 스토리지에 없습니다.');
         }
@@ -54,11 +54,11 @@ const NotificationPage = () => {
         <LeftMenuTap className="left-menu" />
         <div className="main-content">
           {/* Notification 컴포넌트에 notifications를 props로 전달 */}
-          <Notification data={notifications} />
+          <Faq data={faqs} />
         </div>
       </div>
     </Layout>
   );
 };
 
-export default NotificationPage;
+export default FaqPage;

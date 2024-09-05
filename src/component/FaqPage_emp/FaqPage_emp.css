@@ -1,0 +1,53 @@
+  /* component/css/NotificationPage_emp.css */
+
+  /* 전체 컨테이너 */
+  .app-container {
+    display: flex; /* Flexbox를 사용하여 배치 */
+    height: 100vh; /* 전체 화면 높이 사용 */
+    align-items: flex-start; /* 상단 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    padding: 20px; /* 여백 추가 */
+    box-sizing: border-box; /* padding이 높이와 너비에 포함되도록 설정 */
+  }
+
+  /* 왼쪽 메뉴 */
+  .left-menu {
+    flex: 0 1 250px; /* 기본 너비를 설정하고 남은 공간을 유동적으로 설정 */
+    margin-bottom: 30px; /* Footer와의 간격 확보 */
+    width: 100%; /* 반응형 너비 조정 */
+    max-width: 250px; /* 최대 너비 설정 */
+  }
+
+  /* 메인 컨텐츠 */
+  .main-content {
+    flex: 1; /* 남은 공간을 차지하도록 설정 */
+    margin-left: -35%; /* 왼쪽 메뉴와의 간격 설정 */
+    width: 100%; /* 반응형 너비 조정 */
+    max-width: 1200px; /* 최대 너비 설정 */
+  }
+
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .app-container {
+      flex-direction: column; /* 작은 화면에서 수직으로 배치 */
+      align-items: center; /* 중앙 정렬 */
+    }
+
+    .left-menu {
+      width: 100%; /* 왼쪽 메뉴가 전체 너비를 차지하도록 설정 */
+      max-width: none; /* 최대 너비 설정 제거 */
+      margin-bottom: 20px; /* 간격 조정 */
+    }
+
+    .main-content {
+      margin-left: 20%; /* 왼쪽 메뉴와의 간격 제거 */
+      width: 100%; /* 전체 너비를 차지하도록 설정 */
+      max-width: none; /* 최대 너비 설정 제거 */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .app-container {
+      padding: 10px; /* 작은 화면에서 여백 감소 */
+    }
+  }

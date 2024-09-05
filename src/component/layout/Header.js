@@ -17,7 +17,7 @@ const Header = () => {
     else {
         sessionStorage.removeItem("jwtToken");
         sessionStorage.removeItem("myRole");
-        window.location.replace("/")
+        window.location.replace("/");
     }
   };
   const handleLogoClick = () => {

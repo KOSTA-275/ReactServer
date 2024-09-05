@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './layout/Layout';
 import LeftMenuTap_emp from './NotificationPage_emp/LeftMenuTap_emp';
-import Notification_emp from './NotificationPage_emp/Notification_emp';
-import './NotificationPage_emp/Notification_emp.css';
+import Faq_emp from './FaqPage_emp/Faq_emp';
+import './FaqPage_emp/FaqPage_emp.css';
 import axios from 'axios';
 
-const NotificationPage_emp = () => {
+const FaqPage_emp = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [notifications, setNotifications] = useState([]); // notificationRes를 저장할 상태 추가
+  const [faqs, setFaqs] = useState([]); // notificationRes를 저장할 상태 추가
 
     const fetchData = async () => {
       try {
@@ -30,9 +30,9 @@ const NotificationPage_emp = () => {
         const token = sessionStorage.getItem('jwtToken');
 
         // JWT 토큰이 있는지 확인
-        if (token) {
+        if (true) {
           // 두 번째 비동기 요청
-           const notificationRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_list', {
+           const faqRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/faq_list', {
            // const notificationRes = await axios.get('http://localhost:8032/customercare/noti_list', {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -40,9 +40,9 @@ const NotificationPage_emp = () => {
             }
           });
 
-          console.log('가져옴:', notificationRes);
+          console.log('가져옴:', faqRes);
           // notificationRes.data를 상태에 저장
-          setNotifications(notificationRes.data);
+          setFaqs(faqRes.data);
         } else {
           console.log('JWT 토큰이 세션 스토리지에 없습니다.');
         }
@@ -90,8 +90,8 @@ const NotificationPage_emp = () => {
         <LeftMenuTap_emp className="left-menu" />
         <div className="main-content">
           {/* Notification 컴포넌트에 notifications를 props로 전달 */}
-          <Notification_emp
-            data={notifications}
+          <Faq_emp
+            data={faqs}
             onDataUpdate={handleDataUpdate} // 데이터 업데이트 알림 함수 전달 
           />
         </div>
@@ -100,4 +100,4 @@ const NotificationPage_emp = () => {
   );
 };
 
-export default NotificationPage_emp;
+export default FaqPage_emp;

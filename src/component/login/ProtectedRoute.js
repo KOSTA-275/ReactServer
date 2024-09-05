@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const { loggedIn } = useAuth();
+  const { loggedIn, checkAuth } = useAuth();
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const verifyAuth = async () => {
+      await checkAuth(); // 인증 확인 함수 호출
+      setAuthChecked(true); // 인증 확인 완료
+    };
+    
+    verifyAuth();
+  }, [checkAuth]);
+
+  if (!authChecked) {
+    return <div>Loading...</div>; // 인증 확인 중 표시할 UI
+  }
 
   if (!loggedIn) {
     alert('로그인이 필요합니다~!~!~');
-    return <Navigate to="/indexPage" />; // 로그인되지 않았으면 로그인 페이지로 리다이렉트
+    return <Navigate to="/indexPage" />;
   }
 
-  return children; // 로그인되어 있으면 children을 렌더링
+  return children;
 };
 
 export default ProtectedRoute;

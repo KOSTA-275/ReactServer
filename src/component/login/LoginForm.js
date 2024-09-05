@@ -44,8 +44,10 @@ const LoginForm = () => {
       toggleRole(res.data.role);
       return axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
           userEmail: res.data.email,
-          role: res.data.role
+          // role: res.data.role
+          role: "ADMIN"
         }, {
+                  // }, {
           headers: {
             'Content-Type': 'application/json'
           }
