@@ -14,7 +14,7 @@ import FaqPage from './component/FaqPage';
 import RoleNotRoute from './component/login/RoleNotRoute';
 import InquiryPage from './component/InquiryPage';
 import InquiryPage_emp from './component/InquiryPage_emp';
-import InquiryPageList_emp from './component/InquiryPageList_emp';
+import InquiryMyPage_emp from './component/InquiryMyPage_emp';
 
 const App = () => {
   return (
@@ -30,6 +30,8 @@ const App = () => {
           
           <Route path="/InquiryPage" element={<ProtectedRoute><RoleRoute redirectTo="/InquiryPage_emp"><InquiryPage /></RoleRoute></ProtectedRoute>} />
           <Route path="/InquiryPage_emp" element={<ProtectedRoute><RoleNotRoute redirectTo="/indexPage"><InquiryPage_emp /></RoleNotRoute></ProtectedRoute>} />
+
+          <Route path="/InquiryMyPage_emp" element={<ProtectedRoute><RoleNotRoute redirectTo="/indexPage"><InquiryMyPage_emp /></RoleNotRoute></ProtectedRoute>} />
 
           <Route path="/indexPage" element={<IndexPage />} /> {/* Route 정의 */}
           {/* <Route path="/" element={<IndexPage />} /> Route 정의 */}

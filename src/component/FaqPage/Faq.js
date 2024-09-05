@@ -25,7 +25,7 @@ const Faq = ({ data = [] }) => {
         marginRight: '200px',
         color: '#28a7e1'
       }}>
-        공지사항
+        자주 묻는 질문
       </div>
       
       {/* <Accordion defaultActiveKey="0" className="accordion-custom">

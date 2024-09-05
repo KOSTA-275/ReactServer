@@ -14,8 +14,8 @@ import { useNavigate } from 'react-router-dom';
   const formData = new FormData(event.target);
   const token = sessionStorage.getItem('jwtToken');
   try {
-    // await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_insert', 
-      await axios.post('http://localhost:8032/customercare/inquiry_insert',
+    await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_insert', 
+      // await axios.post('http://localhost:8032/customercare/inquiry_insert',
       formData, {
       headers: {
         'Authorization': `Bearer ${token}`

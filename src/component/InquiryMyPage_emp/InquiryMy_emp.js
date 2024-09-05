@@ -36,8 +36,8 @@ const handleSendReply = async (event) => {
   const formData = new FormData(event.target);
   const token = sessionStorage.getItem('jwtToken');
   try {
-    // await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_insert', 
-      await axios.post('http://localhost:8032/customercare/answer_insert',
+    await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_insert', 
+      // await axios.post('http://localhost:8032/customercare/answer_insert',
       formData, {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -101,13 +101,19 @@ const handleSendReply = async (event) => {
               </Form.Group>
               <hr />
               <Form.Group controlId="replyContent">
-                <Form.Label>문의 답변</Form.Label>
-                <Form.Control as="textarea" name="inqAnswer" rows={3} defaultValue={selectedInquiry.inqAnswer.inqAnswer} readOnly />
+              <Form.Label>문의 답변</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="inqAnswer"
+                  rows={3}
+                  defaultValue={selectedInquiry?.inqAnswer?.inqAnswer || ''} // 안전하게 접근하고 기본값 제공
+                  readOnly
+                />
               </Form.Group>
               <Form.Group controlId="formFileMultiple" className="mb-3">
                 <Form.Label>첨부파일</Form.Label>
-                {Array.isArray(selectedInquiry.inqFile) && selectedInquiry.inqFile.length > 0 ? (
-                  selectedInquiry.inqFile.map((file, i) => (
+                {Array.isArray(selectedInquiry.inqAnswer.inqFile) && selectedInquiry.inqAnswer.inqFile.length > 0 ? (
+                  selectedInquiry.inqAnswer.inqFile.map((file, i) => (
                     <div key={i}>{file.oname}</div>
                   ))
                 ) : (

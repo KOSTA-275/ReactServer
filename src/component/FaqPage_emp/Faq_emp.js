@@ -74,13 +74,16 @@ const Faq_emp = ({ data = [], onDataUpdate }) => {
 
   // 삭제 핸들러
   const handleDelete = async (faqSeq) => {
+    console.log(faqSeq);
     const token = sessionStorage.getItem('jwtToken');
     try {
        await axios.delete('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/faq_delete',
       //await axios.delete('http://localhost:8032/customercare/noti_delete',
-      { params:{faqSeq : faqSeq} }, {
+      
+      { data: { faqSeq: faqSeq }, 
             headers: {
-              'Authorization': `Bearer ${token}`
+              'Authorization': `Bearer ${token}`,
+              'Content-Type':'application/json'
             }
           });
       onDataUpdate(); // 상위 컴포넌트에 데이터 업데이트 알림
@@ -104,9 +107,9 @@ const Faq_emp = ({ data = [], onDataUpdate }) => {
         color: '#28a7e1',
         marginTop: '5px'
       }}>
-        공지사항 관리
+        자주 묻는 질문 관리
         </div>
-      <Button className="notiInsertBtn" onClick={() => handleOpenModal(null)}>공지사항 추가</Button>
+      <Button className="notiInsertBtn" onClick={() => handleOpenModal(null)}>자주 묻는 질문 추가</Button>
       <br/>
 
       {/* 모달 컴포넌트 */}
@@ -117,10 +120,10 @@ const Faq_emp = ({ data = [], onDataUpdate }) => {
         aria-describedby="modal-description"
       >
         <div className="modal-content">
-          <h2 id="modal-title">{selectedFaq ? '공지사항 수정' : '공지사항 추가'}</h2>
+          <h2 id="modal-title">{selectedFaq ? '자주 묻는 질문 수정' : '자주 묻는 질문 추가'}</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>공지사항 제목</Form.Label>
+              <Form.Label>자주 묻는 질문 제목</Form.Label>
               <Form.Control
               type="text"
               name="faqTitle"
@@ -129,7 +132,7 @@ const Faq_emp = ({ data = [], onDataUpdate }) => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>공지사항 내용</Form.Label>
+              <Form.Label>자주 묻는 질문 내용</Form.Label>
               <Form.Control
                 as="textarea"
                 name="faqContent"
@@ -162,7 +165,7 @@ const Faq_emp = ({ data = [], onDataUpdate }) => {
             </Accordion.Item>
           ))
         ) : (
-          <div>공지사항이 없습니다.</div>
+          <div>자주 묻는 질문 없습니다.</div>
         )}
       </Accordion>
       </div>

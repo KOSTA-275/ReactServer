@@ -78,10 +78,10 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
     try {
        await axios.delete('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_delete',
       //await axios.delete('http://localhost:8032/customercare/noti_delete',
-      { params:{notiSeq : notiSeq} }, {
+      { data: { notiSeq: notiSeq }, 
             headers: {
               'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
+              'Content-Type':'application/json'
             }
           });
       onDataUpdate(); // 상위 컴포넌트에 데이터 업데이트 알림

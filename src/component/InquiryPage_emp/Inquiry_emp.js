@@ -5,10 +5,12 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Inquiry_emp.css'; // CSS 파일을 임포트
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Inquiry_emp = ({ inquiries = [] }) => {
   const [showModal, setShowModal] = useState(false); // 모달 열림/닫힘 상태
   const [selectedInquiry, setSelectedInquiry] = useState(null); // 현재 선택된 문의
+  const navigate = useNavigate();
 
   // 날짜를 'YYYY/MM/DD' 형식으로 변환하는 함수
   const formatDate = (dateString) => {
@@ -36,15 +38,15 @@ const handleSendReply = async (event) => {
   const formData = new FormData(event.target);
   const token = sessionStorage.getItem('jwtToken');
   try {
-    // await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_insert', 
-      await axios.post('http://localhost:8032/customercare/answer_insert',
+    await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/answer_insert', 
+      // await axios.post('http://localhost:8032/customercare/answer_insert',
       formData, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
     alert("문의에 답변하였습니다!");
-    // navigate("/InquiryMyPage");
+    navigate("/InquiryMyPage_emp");
   } catch (error) {
     console.error('폼 제출 오류:', error);
   }

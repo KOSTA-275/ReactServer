@@ -17,10 +17,10 @@ const InquiryPage_emp = () => {
       const token = sessionStorage.getItem('jwtToken');
 
       // JWT 토큰이 있는지 확인
-      if (true) {
+      if (token) {
         // 두 번째 비동기 요청
-        // const inquiriesRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_list', {
-          const inquiriesRes = await axios.get('http://localhost:8032/customercare/inquiry_nolist', {
+        const inquiriesRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_nolist', {
+          // const inquiriesRes = await axios.get('http://localhost:8032/customercare/inquiry_nolist', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
