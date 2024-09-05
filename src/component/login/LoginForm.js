@@ -41,9 +41,10 @@ const LoginForm = () => {
     // res가 유효한지 확인 (예: res.status === 200, 데이터가 있는지 확인 등)
     if (res.status === 200 && res.data) {
       // res가 유효하면 두 번째 요청 실행
+      toggleRole(res.data.role);
       return axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
           userEmail: res.data.email,
-          role: "ADMIN"
+          role: res.data.role
         }, {
           headers: {
             'Content-Type': 'application/json'
@@ -58,31 +59,13 @@ const LoginForm = () => {
     console.log('두 번째 요청에서 가져옴:', secondRes);
     // res가 유효한지 확인 (예: res.status === 200, 데이터가 있는지 확인 등)
     if (secondRes.status === 200 && secondRes.data) {
-      // res가 유효하면 두 번째 요청 실행
-      sessionStorage.setItem('jwtToken', secondRes.data);
-      return axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/role_auth', null,{
-          headers: {
-            'Authorization': `Bearer ${secondRes.data}`,
-            'Content-Type': 'application/json'
-          }
-        });
-    } else {
-      throw new Error('두 번째 요청에서 유효한 데이터를 가져오지 못했습니다.');
-    }
-  })
-  .then((thirdRes) => {
-    // 세 번째 요청이 성공적으로 완료된 경우 처리
-    console.log('세 번째 요청에서 가져옴:', thirdRes);
-    // thirdRes 유효한지 확인
-    if (thirdRes.status === 200 && thirdRes.data) {
         setUserEmail('');
         setUserPw('');
         navigate('/');
+        sessionStorage.setItem("jwtToken",secondRes.data);
         toggleLogin(true);
-        toggleRole(thirdRes.data);
-      
     } else {
-      throw new Error('세 번째 요청에서 유효한 데이터를 가져오지 못했습니다.');
+      throw new Error('두 번째 요청에서 유효한 데이터를 가져오지 못했습니다.');
     }
   })
   .catch((err) => {
