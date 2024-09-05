@@ -118,7 +118,7 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
         aria-describedby="modal-description"
       >
         <div className="modal-content">
-          <h2 id="modal-title">공지사항 추가</h2>
+          <h2 id="modal-title">{selectedNotification ? '공지사항 수정' : '공지사항 추가'}</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>공지사항 제목</Form.Label>

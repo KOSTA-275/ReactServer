@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import './Inquiry_emp.css'; // CSS 파일을 임포트
+import './InquiryMy_emp.css'; // CSS 파일을 임포트
 import axios from 'axios';
 
 const Inquiry_emp = ({ inquiries = [] }) => {
@@ -52,7 +52,9 @@ const handleSendReply = async (event) => {
 
   return (
     <div className="inquiry-list-container">
+      <div className="centered-text">11님의 문의 답변 리스트</div>
       {/* inquiries가 유효한 배열인지 확인하고 map을 사용 */}
+      
       {Array.isArray(inquiries) && inquiries.length > 0 ? (
         inquiries.map((inquiry, index) => (
           <Card key={index} className="inquiry-card">
@@ -62,7 +64,7 @@ const handleSendReply = async (event) => {
                 <Card.Text>문의 날짜 : {formatDate(inquiry.inqRegdate)}</Card.Text>
               </div>
               <Button className='inqBtn' onClick={() => handleShowModal(inquiry)}>
-                문의 확인하기
+                내 답변 확인하기
               </Button>
             </Card.Body>
           </Card>
@@ -78,7 +80,7 @@ const handleSendReply = async (event) => {
         </Modal.Header>
         <Modal.Body className="modal-body-content">
           {selectedInquiry && (
-            <Form onSubmit={handleSendReply}>
+            <Form>
               <Form.Group controlId="inquiryTitle">
                 <Form.Label>문의 제목</Form.Label>
                 <Form.Control type="text" defaultValue={selectedInquiry.inqTitle} readOnly />
@@ -100,17 +102,20 @@ const handleSendReply = async (event) => {
               <hr />
               <Form.Group controlId="replyContent">
                 <Form.Label>문의 답변</Form.Label>
-                <Form.Control as="textarea" name="inqAnswer" rows={3} placeholder="답변 내용을 입력하세요" />
+                <Form.Control as="textarea" name="inqAnswer" rows={3} defaultValue={selectedInquiry.inqAnswer.inqAnswer} readOnly />
               </Form.Group>
               <Form.Group controlId="formFileMultiple" className="mb-3">
                 <Form.Label>첨부파일</Form.Label>
-                <Form.Control type="file" name="ufiles" size="sm" multiple />
+                {Array.isArray(selectedInquiry.inqFile) && selectedInquiry.inqFile.length > 0 ? (
+                  selectedInquiry.inqFile.map((file, i) => (
+                    <div key={i}>{file.oname}</div>
+                  ))
+                ) : (
+                  <div>첨부파일이 없습니다~!</div>
+                )}
               </Form.Group>
               <input type="hidden" name="inqSeq" value={selectedInquiry.inqSeq}/>
               <input type="hidden" name="userSeq" value={11} />
-              <Button className='modalSendBtn' type="submit">
-                보내기
-              </Button>
             </Form>
           )}
         </Modal.Body>
