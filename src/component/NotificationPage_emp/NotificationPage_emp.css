@@ -21,7 +21,7 @@
   /* 메인 컨텐츠 */
   .main-content {
     flex: 1; /* 남은 공간을 차지하도록 설정 */
-    margin-left: 20px; /* 왼쪽 메뉴와의 간격 설정 */
+    margin-left: -35%; /* 왼쪽 메뉴와의 간격 설정 */
     width: 100%; /* 반응형 너비 조정 */
     max-width: 1200px; /* 최대 너비 설정 */
   }
@@ -40,7 +40,7 @@
     }
 
     .main-content {
-      margin-left: 0; /* 왼쪽 메뉴와의 간격 제거 */
+      margin-left: 20%; /* 왼쪽 메뉴와의 간격 제거 */
       width: 100%; /* 전체 너비를 차지하도록 설정 */
       max-width: none; /* 최대 너비 설정 제거 */
     }
