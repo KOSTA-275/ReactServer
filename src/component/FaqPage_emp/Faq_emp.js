@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import Modal from '@mui/material/Modal';
 import Accordion from 'react-bootstrap/Accordion';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Notification_emp.css';
+import './Faq_emp.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
-const Notification_emp = ({ data = [], onDataUpdate }) => {
+const Faq_emp = ({ data = [], onDataUpdate }) => {
   // 날짜를 'YYYY/MM/DD' 형식으로 변환하는 함수
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -20,11 +20,11 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
 
   // 모달 표시 여부를 관리하는 상태
   const [openModal, setOpenModal] = useState(false);
-  const [selectedNotification, setSelectedNotification] = useState(null); // 현재 선택된 공지사항 정보
+  const [selectedFaq, setSelectedFaq] = useState(null); // 현재 선택된 공지사항 정보
 
   // 모달을 열기 위한 핸들러
-  const handleOpenModal = (notification) => {
-    setSelectedNotification(notification); // 현재 선택된 공지사항 정보 설정
+  const handleOpenModal = (faq) => {
+    setSelectedFaq(faq); // 현재 선택된 공지사항 정보 설정
     setOpenModal(true);
   };
 
@@ -40,13 +40,13 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
 
     try {
       // 수정 모드인지 확인
-      if (selectedNotification) { // 수정할 공지사항이 선택된 경우
+      if (selectedFaq) { // 수정할 공지사항이 선택된 경우
         // 수정 모드일 때, 'noti_update' 엔드포인트로 PUT 요청 전송
-         await axios.put('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_update', {
+         await axios.put('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/faq_update', {
          // await axios.put('http://localhost:8032/customercare/noti_update', {
-          notiSeq: selectedNotification.notiSeq, // 공지사항 번호 포함
-          notiTitle: formData.get('notiTitle'),  // 수정된 제목
-          notiContent: formData.get('notiContent'),  // 수정된 내용
+          faqSeq: selectedFaq.faqSeq, // 공지사항 번호 포함
+          faqTitle: formData.get('faqTitle'),  // 수정된 제목
+          faqContent: formData.get('faqContent'),  // 수정된 내용
           userSeq: 11
         }, {
           headers: {
@@ -56,7 +56,7 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
         });
       } else {
         // 새 공지사항 추가 모드일 때, 'noti_insert' 엔드포인트로 POST 요청 전송
-         await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_insert', 
+         await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/faq_insert', 
          //await axios.post('http://localhost:8032/customercare/noti_insert',
          formData, {
           headers: {
@@ -73,12 +73,14 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
   };
 
   // 삭제 핸들러
-  const handleDelete = async (notiSeq) => {
+  const handleDelete = async (faqSeq) => {
+    console.log(faqSeq);
     const token = sessionStorage.getItem('jwtToken');
     try {
-       await axios.delete('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/noti_delete',
+       await axios.delete('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/faq_delete',
       //await axios.delete('http://localhost:8032/customercare/noti_delete',
-      { data: { notiSeq: notiSeq }, 
+      
+      { data: { faqSeq: faqSeq }, 
             headers: {
               'Authorization': `Bearer ${token}`,
               'Content-Type':'application/json'
@@ -90,8 +92,8 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
     }
   };
 
- const handleUpdate = (notification) => {
-    handleOpenModal(notification); // 수정 모드로 변경 (모달 열기)
+ const handleUpdate = (faq) => {
+    handleOpenModal(faq); // 수정 모드로 변경 (모달 열기)
   };
 
 
@@ -105,9 +107,9 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
         color: '#28a7e1',
         marginTop: '5px'
       }}>
-        공지사항 관리
+        자주 묻는 질문 관리
         </div>
-      <Button className="notiInsertBtn" onClick={() => handleOpenModal(null)}>공지사항 추가</Button>
+      <Button className="notiInsertBtn" onClick={() => handleOpenModal(null)}>자주 묻는 질문 추가</Button>
       <br/>
 
       {/* 모달 컴포넌트 */}
@@ -118,52 +120,52 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
         aria-describedby="modal-description"
       >
         <div className="modal-content">
-          <h2 id="modal-title">{selectedNotification ? '공지사항 수정' : '공지사항 추가'}</h2>
+          <h2 id="modal-title">{selectedFaq ? '자주 묻는 질문 수정' : '자주 묻는 질문 추가'}</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>공지사항 제목</Form.Label>
+              <Form.Label>자주 묻는 질문 제목</Form.Label>
               <Form.Control
               type="text"
-              name="notiTitle"
+              name="faqTitle"
               placeholder="제목을 입력하세요~"
-              defaultValue={selectedNotification ? selectedNotification.notiTitle : ''}
+              defaultValue={selectedFaq ? selectedFaq.faqTitle : ''}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>공지사항 내용</Form.Label>
+              <Form.Label>자주 묻는 질문 내용</Form.Label>
               <Form.Control
                 as="textarea"
-                name="notiContent"
+                name="faqContent"
                 placeholder="내용을 입력하세요~"
                 rows={3}
-                defaultValue={selectedNotification ? selectedNotification.notiContent : ''}  // 수정 모드일 때 기존 내용 표시
+                defaultValue={selectedFaq ? selectedFaq.faqContent : ''}  // 수정 모드일 때 기존 내용 표시
               />
             </Form.Group>
             <input type="hidden" name="userSeq" value={11} />
-            <Button className='notiModalInsertBtn' type='submit'>{selectedNotification ? '수정' : '추가'}</Button>
+            <Button className='notiModalInsertBtn' type='submit'>{selectedFaq ? '수정' : '추가'}</Button>
           </Form>
         </div>
       </Modal>
       <div claasName='container'>
       <Accordion defaultActiveKey="0" className="accordion-custom">
         {data.length > 0 ? (
-          data.map((notification) => (
-            <Accordion.Item key={notification.notiSeq} eventKey={`${notification.notiSeq}`}>
-              <Accordion.Header>{notification.notiTitle}</Accordion.Header>
+          data.map((faq) => (
+            <Accordion.Item key={faq.faqSeq} eventKey={`${faq.faqSeq}`}>
+              <Accordion.Header>{faq.faqTitle}</Accordion.Header>
               <Accordion.Body>
-                {notification.notiContent}
+                {faq.faqContent}
                 <br />
                 <br />
-                {formatDate(notification.notiRegdate)}
+                {formatDate(faq.faqRegdate)}
                 <br />
                 <br />
-                <Button className="notiUpdateBtn" onClick={() => handleUpdate(notification)}>수정</Button>&nbsp;&nbsp;
-                <Button className="notiDeleteBtn" onClick={() => handleDelete(notification.notiSeq)}>삭제</Button>
+                <Button className="notiUpdateBtn" onClick={() => handleUpdate(faq)}>수정</Button>&nbsp;&nbsp;
+                <Button className="notiDeleteBtn" onClick={() => handleDelete(faq.faqSeq)}>삭제</Button>
               </Accordion.Body>
             </Accordion.Item>
           ))
         ) : (
-          <div>공지사항이 없습니다.</div>
+          <div>자주 묻는 질문 없습니다.</div>
         )}
       </Accordion>
       </div>
@@ -171,4 +173,4 @@ const Notification_emp = ({ data = [], onDataUpdate }) => {
   );
 };
 
-export default Notification_emp;
+export default Faq_emp;

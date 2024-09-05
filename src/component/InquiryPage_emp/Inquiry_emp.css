@@ -1,0 +1,38 @@
+/* Inquiry_emp.css */
+
+.inquiry-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.inquiry-card {
+  width: 48%;
+  margin-bottom: 20px;
+}
+
+.inquiry-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body-content {
+  max-height: 70vh; /* 모달의 최대 높이 설정 */
+  overflow-y: auto; /* 콘텐츠가 넘칠 경우 스크롤 */
+}
+
+.inqBtn{
+  background-color: #847ec7; /* 버튼 배경색 */
+}
+
+.modalCloseBtn{
+    background-color: #847ec7; /* 버튼 배경색 */
+}
+
+.modalSendBtn{
+    background-color: #847ec7; /* 버튼 배경색 */
+}
