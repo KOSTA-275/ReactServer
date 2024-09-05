@@ -1,0 +1,27 @@
+.categoryFilter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .categoryButton {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .categoryButton.active {
+    background-color: #ffd700;
+    color: white;
+    border-color: #ffd700;
+  }
+  
+  .categoryButton:hover {
+    background-color: #e0e0e0;
+  }
