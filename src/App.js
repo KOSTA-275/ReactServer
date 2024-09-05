@@ -7,10 +7,11 @@ import LoginForm from './component/login/LoginForm';
 import RoleRoute from './component/login/RoleRoute'; 
 import ProtectedRoute from './component/login/ProtectedRoute'; 
 import { AuthProvider } from './component/login/AuthContext';
-import ErrandInsertPage from './component/ErrandInsertPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NotificationPage_emp from './component/NotificationPage_emp';
+import ErrandInsertPage from './component/ErrandInsertPage';
 import ErrandListPage from './component/ErrandListPage';
+import ErrandDetailPage from './component/ErrandDetailPage';
 import FaqPage_emp from './component/FaqPage_emp';
 import FaqPage from './component/FaqPage';
 import RoleNotRoute from './component/login/RoleNotRoute';
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/Notification" element={<ProtectedRoute><RoleRoute redirectTo="/Notification_emp"><NotificationPage /></RoleRoute></ProtectedRoute>} />
           <Route path="/errand-insert" element={<ErrandInsertPage />} />
           <Route path="/errand-list" element={<ErrandListPage />} />
+          <Route path="/errand-detail/:id" element={<ErrandDetailPage />} />
           <Route path="/Notification_emp" element={<ProtectedRoute><RoleNotRoute redirectTo="/indexPage"><NotificationPage_emp /></RoleNotRoute></ProtectedRoute>} />
           <Route path="/" element={<IndexPage />} /> {/* Route 정의 */}
           

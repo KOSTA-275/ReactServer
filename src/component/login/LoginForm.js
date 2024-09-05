@@ -27,9 +27,9 @@ const LoginForm = () => {
       return false;
     }
     // 첫 번째 요청
-        axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/users/login', {
-        email: userEmail,
-        password: userPw
+    axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
+        userName: '원성진',
+        role: 'ADMIN'
       }, {
         headers: {
           'Content-Type': 'application/json'
