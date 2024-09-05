@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate 훅 import
+import { useNavigate, Link } from 'react-router-dom'; // useNavigate 훅 import
 import styles from './Header.module.scss';
 import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
 
@@ -29,8 +29,8 @@ const Header = () => {
 
         <nav className={styles.navigation}>
           <ul>
-            <li>도와주세요</li>
-            <li>도와줄게요</li>
+          <li><Link to="/errand-insert">도와주세요</Link></li>
+          <Link to="/errand-list">도와줄게요</Link>
             <li>해드릴게요</li>
             <li>고객센터</li>
           </ul>
