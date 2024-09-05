@@ -47,10 +47,10 @@ const Login = () => {
           로그인
         </button>
         <div className={styles.findLinks}>
-          <Link to="/find-id" className={styles.findLink}>
+          <Link to="/findId" className={styles.findLink}>
             아이디 찾기
           </Link>
-          <Link to="/password-reset" className={styles.findLink}>
+          <Link to="/passwordReset" className={styles.findLink}>
             비밀번호 찾기
           </Link>
         </div>

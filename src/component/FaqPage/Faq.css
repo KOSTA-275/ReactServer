@@ -1,0 +1,21 @@
+/* Notification.css */
+
+/* 전체 Accordion의 스타일을 정의 */
+.accordion-custom {
+  max-width: 850px; /* 최대 너비를 설정하여 크기를 줄입니다 */
+  margin: 0 auto; /* 수평 가운데 정렬 */
+  text-align: left; /* 내부 텍스트를 오른쪽으로 정렬 */
+  margin-top: 50px; /* 첫 번째 링크의 상단 여백 설정 */
+  margin-right: 15%;
+
+}
+
+/* Accordion의 Header 스타일을 정의 */
+.accordion-custom .accordion-header {
+  font-size: 1rem; /* 폰트 크기를 조절하여 크기를 줄입니다 */
+}
+
+/* Accordion의 Body 스타일을 정의 */
+.accordion-custom .accordion-body {
+  font-size: 0.9rem; /* 폰트 크기를 줄입니다 */
+}

@@ -1,29 +1,102 @@
-/* LeftMenuTap.css */
+/* 기본 스타일 */
 .container {
-  display: flex; /* Flexbox 사용 */
+  display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
-  margin-left: -35%; /* 왼쪽 간격 */
+  align-items: center; /* 수직 중앙 정렬 */
+  margin: 0 auto; /* 중앙 정렬을 위한 마진 설정 */
+  width: 100%; /* 화면 전체 너비 */
+  padding: 10px;
+  box-sizing: border-box;
+  transform: translateX(-35%); /* 왼쪽으로 35% 이동 */
+  position: relative; /* 또는 absolute, fixed 등 다른 위치 속성 */
+  z-index: 1; /* 다른 요소들보다 낮은 값을 설정 */
 }
 
 .customNav {
-  width: 20% !important;
-  padding: 5px;
+  width: 20%; /* 기본 너비 설정 */
+  padding: 10px;
+  margin: 20px 0; /* 위아래 간격 */
+  background-color: #fff9c4;
   box-sizing: border-box;
-  margin-bottom: 20px; /* Footer와의 간격을 확보 */
-  background-color:#fff9c4;
 }
 
 .customNav .nav-link {
-  margin-bottom: 20px; /* 각 nav-link 간의 하단 간격 설정 */
+  margin-bottom: 20px; /* 각 링크 간의 간격 */
 }
 
 .customNav .first-link {
-  font-size: 1.6rem; /* 폰트 크기 증가 */
-  font-weight: bold; /* 볼드체 설정 */
-  margin-top: 30px; /* 첫 번째 링크의 상단 여백 설정 */
-  padding-left: 40px; /* 왼쪽 패딩 조정 */
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 30px;
+  padding-left: 40px; 
 }
 
 .customNav .nav-link:not(.first-link) {
-  padding-left: 70px; /* 두 번째 링크부터 왼쪽 패딩 조정 */
+  padding-left: 70px; 
+}
+
+/* 반응형 스타일 (화면 크기가 1024px 이하일 때) */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* 수직 레이아웃으로 변경 */
+    padding: 20px; /* 내부 패딩 조정 */
+    transform: translateX(-30%); /* 왼쪽으로 30% 이동 */
+  }
+
+  .customNav {
+    width: 50%; /* 네비게이션 너비 확대 */
+    margin: 10px auto; /* 수평 중앙 정렬 */
+  }
+
+  .customNav .first-link {
+    font-size: 1.4rem; /* 폰트 크기 감소 */
+    padding-left: 20px; 
+  }
+
+  .customNav .nav-link:not(.first-link) {
+    padding-left: 30px; 
+  }
+}
+
+/* 반응형 스타일 (화면 크기가 768px 이하일 때) */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px; /* 패딩 조정 */
+    transform: translateX(-20%); /* 왼쪽으로 20% 이동 */
+  }
+
+  .customNav {
+    width: 70%; /* 네비게이션 너비 더 확대 */
+  }
+
+  .customNav .first-link {
+    font-size: 1.3rem; 
+    padding-left: 15px;
+  }
+
+  .customNav .nav-link:not(.first-link) {
+    padding-left: 20px; 
+  }
+}
+
+/* 반응형 스타일 (화면 크기가 480px 이하일 때) */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+    transform: translateX(-10%); /* 왼쪽으로 10% 이동 */
+  }
+
+  .customNav {
+    width: 90%; /* 거의 전체 너비 차지 */
+    padding: 5px;
+  }
+
+  .customNav .first-link {
+    font-size: 1.2rem; 
+    padding-left: 10px; 
+  }
+
+  .customNav .nav-link:not(.first-link) {
+    padding-left: 15px; 
+  }
 }

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './layout/Layout'
 import LeftMenuTap_emp from './NotificationPage_emp/LeftMenuTap_emp'
-import './InquiryPage_emp/InquiryPage_emp.css'
-import Inquiry_emp from './InquiryPage_emp/Inquiry_emp'
-import axios from 'axios'
+import './InquiryMyPage_emp/InquiryMyPage_emp.css'
+import InquiryMy_emp from './InquiryMyPage_emp/InquiryMy_emp'
+import axios from 'axios';
 
-const InquiryPage_emp = () => {
+const InquiryMyPage_emp = () => {
+
+
 
     const [inquiriesRes, setInquiriesRes] = useState(null);
     useEffect( () => {
@@ -19,10 +21,12 @@ const InquiryPage_emp = () => {
       // JWT 토큰이 있는지 확인
       if (token) {
         // 두 번째 비동기 요청
-        const inquiriesRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_nolist', {
-          // const inquiriesRes = await axios.get('http://localhost:8032/customercare/inquiry_nolist', {
+        const inquiriesRes = await axios.get('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/customercare/inquiry_mylist', {
+        // const inquiriesRes = await axios.get('http://localhost:8032/customercare/inquiry_mylist', {
+          params: { userSeq: 11 },
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
         });
         console.log(inquiriesRes.data);
@@ -35,11 +39,11 @@ const InquiryPage_emp = () => {
           <LeftMenuTap_emp className="left-menu" />
           <div className="main-content">
             {/* Notification 컴포넌트에 notifications를 props로 전달 */}
-            <Inquiry_emp inquiries={inquiriesRes} />
+            <InquiryMy_emp inquiries={inquiriesRes} />
           </div>
         </div>
       </Layout>
     );
 }
 
-export default InquiryPage_emp;
+export default InquiryMyPage_emp;

@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // useNavigate 훅 import
 import styles from './Header.module.scss';
 import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
+import { useAuth } from '../login/AuthContext';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
+  const location = useLocation();
   const navigate = useNavigate(); // useNavigate 훅 사용
-
+  const { loggedIn } = useAuth();
   // 로그인 클릭 시 호출되는 함수
   const handleLoginClick = () => {
-    navigate('/loginPage');
+    if(!loggedIn) {
+        navigate('/loginPage');
+    }
+    else {
+        sessionStorage.removeItem("jwtToken");
+        sessionStorage.removeItem("myRole");
+        window.location.replace("/");
+    }
   };
   const handleLogoClick = () => {
     navigate('/indexPage');
   }
+  useEffect(() => {
+   
+}, []);
 
   return (
     <header className={styles.header}>
@@ -37,7 +50,9 @@ const Header = () => {
         </nav>
 
         <div className={styles.profile}>
-          <span onClick={handleLoginClick} style={{ cursor: 'pointer' }}>로그인</span>
+          <span onClick={handleLoginClick} style={{ cursor: 'pointer' }}>
+            {loggedIn ? '로그아웃' : '로그인'}
+          </span>
           <div className={styles.profileIcon}></div>
         </div>
       </div>
