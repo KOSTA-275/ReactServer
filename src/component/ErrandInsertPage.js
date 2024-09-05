@@ -139,7 +139,11 @@ const ErrandInsertPage = () => {
       const token = sessionStorage.getItem('jwtToken');
       
       //임시: 요청자 seq를 777로 설정
-      const dataWithRequesterSeq = { ...errandData, requesterSeq: 777 };
+      const dataWithRequesterInfo = { 
+        ...errandData, 
+        requesterSeq: 777,
+        requesterNickname: "테스트요청자"
+      };
 
       //실제 요청자 seq를 받아와야함 -> 담당자에게 문의해야함
       /*
@@ -151,7 +155,7 @@ const ErrandInsertPage = () => {
       */
 
       const response = await axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/ErrandService/errands', 
-        dataWithRequesterSeq,
+        dataWithRequesterInfo,
         {
           headers: {
             'Authorization': `Bearer ${token}`,

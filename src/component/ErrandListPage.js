@@ -22,10 +22,10 @@ const ErrandListPage = () => {
   const fetchErrands = async () => {
     try {
       const token = sessionStorage.getItem('jwtToken');
-      const response = await axios.get(`http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/ErrandService/errands`, {
+      const response = await axios.get(`http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/ErrandService/errands/filter`, {
         params: {
           location: selectedRegion === '전국' ? '' : selectedRegion,
-          category: selectedCategory,
+          categoryId: selectedCategory,
           page: currentPage - 1,
           size: 10
         },
