@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // useNavigate 훅 import
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
-import dowadreamIcon from '../icon/dowadreamlogo.png'; // 이미지를 import
+import dowadreamIcon from '../icon/dowadreamlogo.png';
 import { useAuth } from '../login/AuthContext';
-import { useLocation } from 'react-router-dom';
 
 const Header = () => {
-  const location = useLocation();
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
   const { loggedIn } = useAuth();
-  // 로그인 클릭 시 호출되는 함수
+
   const handleLoginClick = () => {
     if(!loggedIn) {
-        navigate('/loginPage');
-    }
-    else {
-        sessionStorage.removeItem("jwtToken");
-        sessionStorage.removeItem("myRole");
-        window.location.replace("/");
+      navigate('/loginPage');
+    } else {
+      sessionStorage.removeItem("jwtToken");
+      sessionStorage.removeItem("myRole");
+      window.location.replace("/");
     }
   };
+
   const handleLogoClick = () => {
     navigate('/indexPage');
   }
-  useEffect(() => {
-   
-}, []);
+
+  const handleNavClick = (path) => {
+    navigate(path);
+  }
 
   return (
     <header className={styles.header}>
@@ -39,16 +38,14 @@ const Header = () => {
             onClick={handleLogoClick}
           />
         </div>
-
         <nav className={styles.navigation}>
           <ul>
-          <li><Link to="/errand-insert">도와주세요</Link></li>
-          <Link to="/errand-list">도와줄게요</Link>
+            <li onClick={() => handleNavClick('/errand-insert')}>도와주세요</li>
+            <li onClick={() => handleNavClick('/errand-list')}>도와줄게요</li>
             <li>해드릴게요</li>
             <li>고객센터</li>
           </ul>
         </nav>
-
         <div className={styles.profile}>
           <span onClick={handleLoginClick} style={{ cursor: 'pointer' }}>
             {loggedIn ? '로그아웃' : '로그인'}

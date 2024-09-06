@@ -47,10 +47,22 @@
     li {
       margin: 0 15px;
       font-size: 16px;
-      font-weight: bold; /* 글씨를 굵게 설정 */
+      font-weight: bold;
+      cursor: pointer;
+      color: inherit; /* 부모 요소의 색상을 상속 */
+      text-decoration: none; /* 밑줄 제거 */
+      padding: 10px 15px; /* 여백 추가로 클릭 가능한 영역 확장 */
+      border-radius: 5px; /* 모서리를 둥글게 */
+      background-color: initial; /* 기본 배경색 설정 */
+      
+      &:hover {
+        background-color: #d3d3d3; /* 호버 시 배경색을 회색으로 변경 */
+        //글자색은 변경X
+      }
     }
   }
 }
+
 
 .profile {
   display: flex;

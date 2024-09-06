@@ -1,27 +1,40 @@
 .regionSelector {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.regionButton {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem; /* 버튼 내 텍스트 크기를 약간 줄임 */
+}
+
+.regionButton.active {
+  background-color: #28a7e1;
+  color: white;
+  border-color: #28a7e1;
+}
+
+.regionButton:hover {
+  background-color: #e0e0e0;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .regionSelector {
+    grid-template-columns: repeat(6, 1fr);
   }
-  
-  .regionButton {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    background-color: #f0f0f0;
-    color: #333;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .regionSelector {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .regionButton.active {
-    background-color: #ffd700;
-    color: white;
-    border-color: #ffd700;
-  }
-  
-  .regionButton:hover {
-    background-color: #e0e0e0;
-  }
+}

@@ -16,15 +16,17 @@ const categories = [
 const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
   return (
     <div className={styles.categoryFilter}>
-      {categories.map(category => (
-        <button
-          key={category.id}
-          className={`${styles.categoryButton} ${selectedCategory === category.id ? styles.active : ''}`}
-          onClick={() => onCategoryChange(category.id)}
-        >
-          {category.name}
-        </button>
-      ))}
+      <select
+        value={selectedCategory}
+        onChange={(e) => onCategoryChange(e.target.value)}
+        className={styles.categorySelect}
+      >
+        {categories.map(category => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

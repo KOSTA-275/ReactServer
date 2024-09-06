@@ -10,12 +10,19 @@
   height: 400px;         /* 고정된 높이 */
   margin: 10px;
   overflow: hidden;      /* 내용이 박스를 넘을 경우 숨기기 */
+  cursor: pointer; // 20240906 23시 추가 - 이원혁 = 옐로우 박스 클릭해도 넘어가게 하기 위함
+  transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 효과 추가 */
+
+  &:hover {
+    background-color: #ffeeb8; /* 호버 시 더 어두운 노란색으로 변경 */
+  }
 }
 
 .title {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 15px;
+  color: #333; /* 글자색 지정 */
 }
 
 .image {
