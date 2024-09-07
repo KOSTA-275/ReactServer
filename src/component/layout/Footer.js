@@ -41,11 +41,10 @@ const Footer = () => {
               />
             </a>
           </div>
-          <div className={styles.companyName}>자바네명 고객센터</div>
+          <div className={styles.companyName}>자바네명 고객센터</div><br/>
           <span onClick={handleNotifiClick} style={{ cursor: 'pointer' }}>공지사항</span>
-          <br></br>
           <div className={styles.links}>
-          <span onClick={handleFaqClick} style={{ cursor: 'pointer' }}>자주 묻는 질문</span>
+          <span onClick={handleFaqClick} style={{ cursor: 'pointer' }}>자주 묻는 질문</span><br />
           <span onClick={handleInqClick} style={{ cursor: 'pointer' }}>문의 등록하기</span>
           </div>
         </div>

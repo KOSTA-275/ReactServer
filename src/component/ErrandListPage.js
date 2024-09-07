@@ -55,7 +55,9 @@ const ErrandListPage = () => {
       <div className={styles.errandListPage}>
         <h1 className={styles.title}>심부름 목록</h1>
         <RegionSelector selectedRegion={selectedRegion} onRegionChange={handleRegionChange} />
-        <CategoryFilter selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
+        <div className={styles.categoryFilterContainer}>
+          <CategoryFilter selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
+        </div>
         <div className={styles.errandList}>
           {errands.map(errand => (
             <ErrandCard key={errand.errandSeq} errand={errand} />
