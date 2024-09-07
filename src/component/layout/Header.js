@@ -34,8 +34,9 @@ const Header = () => {
             src={dowadreamIcon} 
             alt="DoWaDream Logo" 
             className={styles.iconImage} 
-            style={{ width: "60px", height: "auto", marginLeft: "10px" }} 
+            style={{ width: "60px", height: "auto", marginLeft: "10px", cursor:'pointer' }} 
             onClick={handleLogoClick}
+            
           />
         </div>
         <nav className={styles.navigation}>
@@ -43,7 +44,7 @@ const Header = () => {
             <li onClick={() => handleNavClick('/errand-insert')}>도와주세요</li>
             <li onClick={() => handleNavClick('/errand-list')}>도와줄게요</li>
             <li>해드릴게요</li>
-            <li>고객센터</li>
+            <li onClick={()=>  handleNavClick('/Notification')}>고객센터</li>
           </ul>
         </nav>
         <div className={styles.profile}>
