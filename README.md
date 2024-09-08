@@ -15,3 +15,6 @@ npm install react react-dom react-router-dom<br>
 modal<br>
 npm install @mui/material @emotion/react @emotion/styled<br>
 import Modal from '@mui/material/Modal';<br>
+
+npm install react-router-dom axios
+npm install @babel/plugin-proposal-private-property-in-object
