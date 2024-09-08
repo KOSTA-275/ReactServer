@@ -14,7 +14,7 @@ const LoginForm = () => {
   const { toggleRole } = useAuth();
 
   const handleSocialLogin = (provider) => {
-    window.location.href = `http://localhost:8089/login/${provider}`;
+    window.location.href = `http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/user/login/${provider}`;
   };
 
   const handleLoginFormSubmit = async (e) => {
@@ -27,9 +27,9 @@ const LoginForm = () => {
       return false;
     }
     // 첫 번째 요청
-    axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
-        userName: '원성진',
-        role: 'ADMIN'
+    axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/user/form_login_process', {
+      userEmail: userEmail,
+      userPw: userPw
       }, {
         headers: {
           'Content-Type': 'application/json'
@@ -41,13 +41,13 @@ const LoginForm = () => {
     // res가 유효한지 확인 (예: res.status === 200, 데이터가 있는지 확인 등)
     if (res.status === 200 && res.data) {
       // res가 유효하면 두 번째 요청 실행
-      toggleRole(res.data.role);
+      toggleRole(res.data.userGubun);
       return axios.post('http://ec2-3-35-253-143.ap-northeast-2.compute.amazonaws.com:8088/jwt/login_success', {
-          userEmail: res.data.email,
-          // role: res.data.role
-          role: "ADMIN"
-        }, {
-                  // }, {
+        userEmail: res.data.userEmail,
+        role: res.data.userGubun
+        //role: "ADMIN"
+      }, {
+        // }, {
           headers: {
             'Content-Type': 'application/json'
           }

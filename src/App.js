@@ -18,6 +18,8 @@ import RoleNotRoute from './component/login/RoleNotRoute';
 import InquiryPage from './component/InquiryPage';
 import InquiryPage_emp from './component/InquiryPage_emp';
 import InquiryMyPage_emp from './component/InquiryMyPage_emp';
+import Join from './component/Join';
+import JoinOauth from './component/JoinOauth';
 
 const App = () => {
   return (
@@ -38,10 +40,11 @@ const App = () => {
 
           <Route path="/InquiryMyPage_emp" element={<ProtectedRoute><RoleNotRoute redirectTo="/indexPage"><InquiryMyPage_emp /></RoleNotRoute></ProtectedRoute>} />
 
-          <Route path="/indexPage" element={<IndexPage />} /> {/* Route 정의 */}
+          <Route path="/indexPage" element={<JoinOauth />} /> {/* Route 정의 */}
           {/* <Route path="/" element={<IndexPage />} /> Route 정의 */}
           <Route path="/loginPage" element={<LoginForm />} /> {/* Route 정의 */}
-          <Route path="/loginPage1" element={<Login />} /> {/* Route 정의 */}
+          <Route path="/join_page" element={<Join />} />
+          <Route path="/oauth_join_page" element={<JoinOauth />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

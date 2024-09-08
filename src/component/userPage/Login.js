@@ -25,7 +25,7 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <h2 className={styles.title}>도워드림</h2>
+        <h2 className={styles.title}>도와드림</h2>
         {error && <p className={styles.error}>{error}</p>}
         <input
           type="email"
