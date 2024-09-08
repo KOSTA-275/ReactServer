@@ -50,12 +50,12 @@ const Faq = ({ data = [] }) => {
         {data.length > 0 ? (
           data.map((faq) => (
             <Accordion.Item key={faq.faqSeq} eventKey={`${faq.faqSeq}`}>
-              <Accordion.Header>{faq.faqTitle}</Accordion.Header>
+              <Accordion.Header><span style ={{ fontSize: '20px' }}>
+                Q.&nbsp;&nbsp;</span>{faq.faqTitle}
+                </Accordion.Header>
               <Accordion.Body>
-                {faq.faqContent}
-                <br />
-                <br />
-                {formatDate(faq.faqRegdate)}
+                <span style ={{ fontSize: '15px' }}>
+                A.&nbsp;</span> {faq.faqContent}
               </Accordion.Body>
             </Accordion.Item>
           ))
