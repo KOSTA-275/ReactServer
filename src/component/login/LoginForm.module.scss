@@ -15,6 +15,7 @@
   border-radius: 8px;
   width: 126%;
   max-width: 560px;
+  max-height: 700px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
@@ -68,7 +69,7 @@
     content: '';
     position: absolute;
     top: 50%;
-    width: 40%;
+    width: 30%;
     height: 1px;
     background-color: #888;
   }
@@ -98,13 +99,14 @@
     font-weight: bold;
     font-size: 14px; /* 글자 크기 조정 가능 */
     position: relative;
-    top: -80px; /* 라벨을 위로 이동 */
+    top: -70px; /* 라벨을 위로 이동 */
     left: 0px; /* 라벨을 왼쪽 정렬 */
   }
 
   input {
     width: 100%;
-    padding: 14px;
+    padding: 7px 14px;
+    // padding-top: 0px;
     background-color: rgba(255, 255, 255, 0.7);
     border: 2px solid #ffffff;
     border-radius: 4px;
@@ -122,12 +124,15 @@
   background-color: #fbff00;
   color: rgb(6, 0, 0);
   font-weight: bold;
-  padding: 14px;
-  border: none;
+  padding: 8px; /* Increased padding for a better look */
+  border: 2px solid #000000; /* Added black border to button */
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-
+  margin: -35px;
+  width: 20%;
+  align-self: center;
+  
   &:hover {
     background-color: #3451a6;
   }
@@ -135,7 +140,7 @@
 
 .signupPrompt {
   text-align: center;
-  margin-top: 28px;
+  margin-top: 45px;
   color: #4f4f4f;
 
   .signupLink {

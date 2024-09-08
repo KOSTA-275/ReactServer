@@ -1,0 +1,164 @@
+.join-form-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #a8a8a8; /* Background color */
+    overflow: hidden;
+}
+  
+.form-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 56px;
+    border-radius: 8px;
+    width: 80%; /* Adjust width to be responsive */
+    max-width: 550px; /* Increase max width for form */
+    height: 95%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the contents */
+}
+  
+.form-header {
+    margin-bottom: 42px;
+    text-align: center; /* Center-align text */
+    
+    .form-title {
+        color: #000000;
+        font-weight: bold;
+        font-size: 42px;
+    }
+}
+  
+.social-login {
+    display: flex;
+    flex-direction: row; /* Arrange buttons in a row */
+    gap: 14px; /* Space between buttons */
+    margin-bottom: 28px;
+    width: 100%; /* Ensure social login buttons are centered */
+    justify-content: center; /* Center-align the buttons */
+  
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 66px; /* Width of the button */
+        height: 66px; /* Height of the button */
+        border-radius: 50%;
+        background-color: #3a3a3a;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+            background-color: #4a4a4a;
+        }
+  
+        img {
+            width: 24px; /* Width of the icon inside the button */
+            height: 24px; /* Height of the icon inside the button */
+        }
+    }
+}
+  
+.or-text {
+    text-align: center;
+    color: #888;
+    margin: 28px 0;
+    position: relative;
+    width: 500px;
+  
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 27%;
+        height: 1px;
+        background-color: #888;
+    }
+  
+    &::before {
+        left: 0;
+    }
+  
+    &::after {
+        right: 0;
+    }
+}
+  
+.input-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 660%;
+    max-width: none;
+    align-items: center;
+    margin-left: -190px;
+    padding-top: 10px;
+  
+    input {
+        width: 100%;
+        padding: 18px; /* Increase padding for larger input fields */
+        font-size: 16px; /* Increase font size for better readability */
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 2px solid #ffffff;
+        border-radius: 4px;
+        color: rgb(0, 0, 0);
+        outline: none;
+        transition: border-color 0.3s;
+  
+        &:focus {
+            border-color: #4161cc;
+        }
+    }
+  
+    svg {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        fill: #6c757d;
+    }
+}
+  
+.submit-button {
+    background-color: #fbff00;
+    color: rgb(6, 0, 0);
+    font-weight: bold;
+    padding: 8px; /* Increase padding for larger button */
+    border: 2px solid #000000; /* Added black border to button */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 28px; /* Add margin for spacing */
+    margin-left: -13px;
+    width: 130%; /* Full width button */
+    max-width: 120px; /* Max width for button */
+    text-align: center; /* Center-align text within button */
+    
+    &:hover {
+        background-color: #3451a6;
+    }
+}
+  
+.signup-prompt {
+    text-align: center;
+    margin-top: 28px;
+    color: #4f4f4f;
+  
+    .signup-link {
+        color: #000000;
+        text-decoration: none;
+        margin-left: 5px;
+  
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
